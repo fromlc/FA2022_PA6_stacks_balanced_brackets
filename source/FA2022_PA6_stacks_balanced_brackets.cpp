@@ -104,7 +104,7 @@ void inputLoop() {
 // returns false if "q" or "Q" entered, true otherwise
 //------------------------------------------------------------------------------
 bool getInputString(string& s) {
-	cout << '\n' << PROMPT << ": " << YELLOW;
+	cout << '\n' << PROMPT << YELLOW;
 	getline(cin, s);
 	cout << RESET_COLORS;
 
