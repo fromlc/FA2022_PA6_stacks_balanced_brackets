@@ -69,7 +69,7 @@ int main() {
 }
 
 //------------------------------------------------------------------------------
-// returns false if "q" or "Q" entered
+// returns false if "q" or "Q" entered, true otherwise
 //------------------------------------------------------------------------------
 bool getInputString(string& s) {
 	cout << "\nEnter bracket string: ";
