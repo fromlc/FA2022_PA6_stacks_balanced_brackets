@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // FA2022_PA6_stacks_balanced_brackets.cpp
 // 
-// Checks a bracket string for balance.
+// Checks a bracket string for balance, ignores all other characters.
 // Bracket characters supported: []{}()<>
 //
 // Author: Gaddis 9E Ch.13 Programming Challenge 15 on p.1222
