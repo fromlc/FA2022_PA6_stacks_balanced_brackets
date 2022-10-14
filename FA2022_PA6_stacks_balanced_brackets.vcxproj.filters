@@ -23,5 +23,8 @@
     <ClInclude Include="source\CharStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\ansi_colors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

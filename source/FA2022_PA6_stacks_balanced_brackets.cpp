@@ -54,6 +54,8 @@ static const enum {		// supported bracket characters
 void displayBanner();
 void inputLoop();
 bool getInputString(string& s);
+bool validLeftBracket(char c);
+bool validRightBracket(char c);
 bool balancedBrackets(string&);
 bool isMatchingRightBracket(char c);
 char cMatch(char c);
@@ -115,13 +117,11 @@ bool balancedBrackets(string& s) {
 
 	for (char c : s) {
 		// push on left bracket
-		if (c == L_SQUARE || c == L_CURLY ||
-			c == L_PAREN || c == L_ANGLE) {
+		if (validLeftBracket(c)) {
 			g_stack.push(c);
 		}
 		// check for balance on right bracket
-		else if (c == R_SQUARE || c == R_CURLY ||
-			c == R_PAREN || c == R_ANGLE) {
+		else if (validRightBracket(c)) {
 			balanced = isMatchingRightBracket(c);
 			if (!balanced) {
 				break;
@@ -129,6 +129,20 @@ bool balancedBrackets(string& s) {
 		}
 	}
 	return balanced;
+}
+
+//------------------------------------------------------------------------------
+// returns true on valid left-side bracket, false otherwise
+//------------------------------------------------------------------------------
+bool validLeftBracket(char c) {
+	return c == L_SQUARE || c == L_CURLY || c == L_PAREN || c == L_ANGLE;
+}
+
+//------------------------------------------------------------------------------
+// returns true on valid right-side bracket, false otherwise
+//------------------------------------------------------------------------------
+bool validRightBracket(char c) {
+	return c == R_SQUARE || c == R_CURLY || c == R_PAREN || c == R_ANGLE;
 }
 
 //------------------------------------------------------------------------------

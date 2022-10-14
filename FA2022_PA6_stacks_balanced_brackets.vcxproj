@@ -22,6 +22,7 @@
     <ClCompile Include="source\FA2022_PA6_stacks_balanced_brackets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\ansi_colors.h" />
     <ClInclude Include="source\CharStack.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
