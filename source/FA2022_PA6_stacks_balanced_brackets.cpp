@@ -1,5 +1,8 @@
 //------------------------------------------------------------------------------
 // FA2022_PA6_stacks_balanced_brackets.cpp
+// 
+// Checks a bracket string for balance.
+// Bracket characters supported: []{}()<>
 //
 // Author: Gaddis 9E Ch.13 Programming Challenge 15 on p.1222
 //------------------------------------------------------------------------------
@@ -25,14 +28,16 @@ constexpr int MAX_LEN = 100;
 //------------------------------------------------------------------------------
 static CharStack g_stack;
 
-static const enum g_brackets {
+static const enum {
 	L_SQUARE = '[',
 	R_SQUARE = ']',
 	L_CURLY = '{',
 	R_CURLY = '}',
 	L_PAREN = '(',
 	R_PAREN = ')',
-};
+	L_ANGLE = '<',
+	R_ANGLE = '>',
+} g_brackets;
 
 //------------------------------------------------------------------------------
 // test bracket strings
@@ -87,11 +92,13 @@ bool balancedBrackets(string& s) {
 
 	for (char c : s) {
 		// push on left bracket
-		if (c == L_SQUARE || c == L_CURLY || c == L_PAREN) {
+		if (c == L_SQUARE || c == L_CURLY || 
+			c == L_PAREN || c == L_ANGLE) {
 			g_stack.push(c);
 		}
 		// check for balance on right bracket
-		else if (c == R_SQUARE || c == R_CURLY || c == R_PAREN) {
+		else if (c == R_SQUARE || c == R_CURLY ||
+				 c == R_PAREN || c == R_ANGLE) {
 			balanced = isMatchingRightBracket(c);
 			if (!balanced) {
 				break;
@@ -127,10 +134,12 @@ char cMatch(char c) {
 	if (c == R_SQUARE) return L_SQUARE;
 	if (c == R_CURLY) return L_CURLY;
 	if (c == R_PAREN) return L_PAREN;
+	if (c == R_ANGLE) return L_ANGLE;
 	// return matching right side
 	if (c == L_SQUARE) return R_SQUARE;
 	if (c == L_CURLY) return R_CURLY;
 	if (c == L_PAREN) return R_PAREN;
+	if (c == L_ANGLE) return R_ANGLE;
 	// last resort returns passed value
 	return c;
 }
