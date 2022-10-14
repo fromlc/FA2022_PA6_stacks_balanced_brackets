@@ -42,7 +42,7 @@ public:
 	bool isEmpty() { return vc.empty(); }
 
 	//-----------------------------------------------------------------------------
-	bool isFull() { return false; }		// #TODO vector "never" full?
+	//bool isFull() { return false; }		// #TODO vector "never" full?
 
 	//-----------------------------------------------------------------------------
 	void makeEmpty() { vc.clear(); }
