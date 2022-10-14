@@ -19,7 +19,7 @@ public:
 	CharStack() : CharStack(100) {}
 
 	CharStack(int size) {
-		vc.reserve(100);
+		vc.reserve(size);
 		vc.clear();
 	}
 
