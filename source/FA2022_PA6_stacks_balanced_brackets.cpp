@@ -54,6 +54,8 @@ char cMatch(char c);
 //------------------------------------------------------------------------------
 int main() {
 
+	cout << "\nBracket string balance check\n\n";
+
 	string input;
 	while (getInputString(input)) {
 		if (!balancedBrackets(input) || !g_stack.isEmpty())
@@ -84,7 +86,7 @@ bool balancedBrackets(string& s) {
 	bool balanced = true;
 
 	for (char c : s) {
-		// push left bracket
+		// push on left bracket
 		if (c == L_SQUARE || c == L_CURLY || c == L_PAREN) {
 			g_stack.push(c);
 		}
