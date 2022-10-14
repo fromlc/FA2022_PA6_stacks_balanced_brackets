@@ -23,7 +23,8 @@ using std::string;
 //------------------------------------------------------------------------------
 // constants
 //------------------------------------------------------------------------------
-constexpr int MAX_LEN = 100;
+static constexpr int MAX_LEN = 100;
+static const string PROMPT = "Enter bracket string: ";
 
 //------------------------------------------------------------------------------
 // globals
@@ -103,7 +104,7 @@ void inputLoop() {
 // returns false if "q" or "Q" entered, true otherwise
 //------------------------------------------------------------------------------
 bool getInputString(string& s) {
-	cout << "\nEnter bracket string: " << YELLOW;
+	cout << '\n' << PROMPT << ": " << YELLOW;
 	getline(cin, s);
 	cout << RESET_COLORS;
 
