@@ -66,6 +66,8 @@ char cMatch(char c);
 int main() {
 	displayBanner();
 	inputLoop();
+
+	return 0;
 }
 
 //------------------------------------------------------------------------------
