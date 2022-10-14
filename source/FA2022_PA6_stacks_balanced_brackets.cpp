@@ -63,7 +63,6 @@ int main() {
 
 		g_stack.makeEmpty();
 	}
-
 	cout << "\nGoodbye!\n";
 }
 
@@ -74,10 +73,7 @@ bool getInputString(string& s) {
 	cout << "\nEnter bracket string: ";
 	getline(cin, s);
 
-	bool test1 = (bool) !s.compare("q");
-	bool test2 = (bool) !s.compare("Q");
-
-	return !(test1 || test2);
+	return !((bool)!s.compare("q") || (bool)!s.compare("Q"));
 }
 
 //------------------------------------------------------------------------------
@@ -111,14 +107,14 @@ bool balancedBrackets(string& s) {
 //------------------------------------------------------------------------------
 bool isMatchingRightBracket(char c) {
 	if (g_stack.isEmpty())
-		return false;
+		return false;		// missing left bracket
 
 	if (cMatch(c) == g_stack.peek()) {
 		g_stack.pop();
-		return true;
+		return true;		// found matching left bracket
 	}
 
-	return false;
+	return false;			// all other bracket strings are unbalanced
 }
 
 //------------------------------------------------------------------------------
