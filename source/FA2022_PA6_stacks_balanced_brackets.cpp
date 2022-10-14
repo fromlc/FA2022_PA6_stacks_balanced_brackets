@@ -28,7 +28,7 @@ constexpr int MAX_LEN = 100;
 //------------------------------------------------------------------------------
 static CharStack g_stack;
 
-static const enum {
+static const enum {		// supported bracket characters
 	L_SQUARE = '[',
 	R_SQUARE = ']',
 	L_CURLY = '{',
@@ -49,6 +49,7 @@ static const enum {
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
+void displayBanner();
 bool getInputString(string& s);
 bool balancedBrackets(string&);
 bool isMatchingRightBracket(char c);
@@ -58,8 +59,7 @@ char cMatch(char c);
 // entry point
 //------------------------------------------------------------------------------
 int main() {
-
-	cout << "\nBracket string balance check\n\n";
+	displayBanner();
 
 	string input;
 	while (getInputString(input)) {
@@ -71,6 +71,17 @@ int main() {
 		g_stack.makeEmpty();
 	}
 	cout << "\nGoodbye!\n";
+}
+
+//------------------------------------------------------------------------------
+// show app banner and supported bracket characters
+//------------------------------------------------------------------------------
+void displayBanner() {
+	cout << "\nBracket string balance check\n";
+	cout << "\nSupported bracket characters: ";
+	cout << L_SQUARE << R_SQUARE << L_CURLY << R_CURLY;
+	cout << L_PAREN << R_PAREN << L_ANGLE << R_ANGLE;
+	cout << "\n\n";
 }
 
 //------------------------------------------------------------------------------
@@ -92,13 +103,13 @@ bool balancedBrackets(string& s) {
 
 	for (char c : s) {
 		// push on left bracket
-		if (c == L_SQUARE || c == L_CURLY || 
+		if (c == L_SQUARE || c == L_CURLY ||
 			c == L_PAREN || c == L_ANGLE) {
 			g_stack.push(c);
 		}
 		// check for balance on right bracket
 		else if (c == R_SQUARE || c == R_CURLY ||
-				 c == R_PAREN || c == R_ANGLE) {
+			c == R_PAREN || c == R_ANGLE) {
 			balanced = isMatchingRightBracket(c);
 			if (!balanced) {
 				break;
