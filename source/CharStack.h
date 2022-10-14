@@ -42,7 +42,10 @@ public:
 	bool isEmpty() { return vc.empty(); }
 
 	//-----------------------------------------------------------------------------
-	bool isFull() { return false; }		// dynamic implementation
+	bool isFull() { return false; }		// #TODO vector "never" full?
+
+	//-----------------------------------------------------------------------------
+	void makeEmpty() { vc.clear(); }
 };
 #endif // !CHARSTACK_H
 
