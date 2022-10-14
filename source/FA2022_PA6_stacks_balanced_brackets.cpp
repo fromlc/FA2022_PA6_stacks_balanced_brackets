@@ -99,8 +99,9 @@ void inputLoop() {
 // returns false if "q" or "Q" entered, true otherwise
 //------------------------------------------------------------------------------
 bool getInputString(string& s) {
-	cout << "\nEnter bracket string: ";
+	cout << "\nEnter bracket string: " << YELLOW;
 	getline(cin, s);
+	cout << RESET_COLORS;
 
 	return !((bool)!s.compare("q") || (bool)!s.compare("Q"));
 }
