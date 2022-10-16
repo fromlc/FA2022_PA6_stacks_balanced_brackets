@@ -67,8 +67,7 @@ char cMatch(char c);
 int main() {
 	displayBanner();
 	checkTestCases();
-
-	inputLoop();
+	inputLoop();		// enter bracket strings, Q or q quits
 
 	return 0;
 }
@@ -83,7 +82,7 @@ void displayBanner() {
 	cout << (char)L_CURLY << (char)R_CURLY;
 	cout << (char)L_PAREN << (char)R_PAREN;
 	cout << (char)L_ANGLE << (char)R_ANGLE;
-	cout << '\n';
+	cout << "\nAll other characters are ignored.\n";
 }
 
 //------------------------------------------------------------------------------
