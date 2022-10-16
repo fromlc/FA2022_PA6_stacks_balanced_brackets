@@ -45,7 +45,7 @@ static const enum {		// supported bracket characters
 //------------------------------------------------------------------------------
 // test bracket strings
 //------------------------------------------------------------------------------
-static const string testCases[] = { "[[]{()}]", "()}", "[" };
+static const string g_testCases[] = { "[[]{()}]", "()}", "[" };
 
 //------------------------------------------------------------------------------
 // local function prototypes
@@ -92,7 +92,7 @@ void checkTestCases() {
 	cout << YELLOW << "\nTest cases from PA6 instructions:\n\n"
 		<< RESET_COLORS;
 
-	for (string s : testCases) {
+	for (string s : g_testCases) {
 		checkBracketString(s);
 		cout << '\n';
 	}
@@ -131,7 +131,6 @@ void checkBracketString(string& s) {
 
 	// reset stack when done with string
 	g_stack.makeEmpty();
-
 }
 
 //------------------------------------------------------------------------------
