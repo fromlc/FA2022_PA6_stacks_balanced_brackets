@@ -58,7 +58,7 @@ void checkBracketString(string& s);
 bool balancedBrackets(string&);
 bool validLeftBracket(char c);
 bool validRightBracket(char c);
-bool isMatchingRightBracket(char c);
+bool matchesLeftBracket(char c);
 char cMatch(char c);
 
 //------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ bool balancedBrackets(string& s) {
 		}
 		// check for balance on right bracket
 		else if (validRightBracket(c)) {
-			balanced = isMatchingRightBracket(c);
+			balanced = matchesLeftBracket(c);
 			if (!balanced) {
 				break;
 			}
@@ -177,7 +177,7 @@ bool validRightBracket(char c) {
 // in a balanced bracket string, any right bracket must
 // have a matching left bracket in the top of the stack
 //------------------------------------------------------------------------------
-bool isMatchingRightBracket(char c) {
+bool matchesLeftBracket(char c) {
 	if (g_stack.isEmpty())
 		return false;		// missing left bracket
 
