@@ -45,19 +45,19 @@ static const enum {		// supported bracket characters
 //------------------------------------------------------------------------------
 // test bracket strings
 //------------------------------------------------------------------------------
-//static const string g_test = "[[]{()}]";
-//static const string g_test = "()}";
-//static const string g_test = "[";
+static const string testCases[] = { "[[]{()}]", "()}", "[" };
 
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
 void displayBanner();
+void checkTestCases();
 void inputLoop();
 bool getInputString(string& s);
+void checkBracketString(string& s);
+bool balancedBrackets(string&);
 bool validLeftBracket(char c);
 bool validRightBracket(char c);
-bool balancedBrackets(string&);
 bool isMatchingRightBracket(char c);
 char cMatch(char c);
 
@@ -66,6 +66,7 @@ char cMatch(char c);
 //------------------------------------------------------------------------------
 int main() {
 	displayBanner();
+	checkTestCases();
 	inputLoop();
 
 	return 0;
@@ -81,7 +82,20 @@ void displayBanner() {
 	cout << (char)L_CURLY << (char)R_CURLY;
 	cout << (char)L_PAREN << (char)R_PAREN;
 	cout << (char)L_ANGLE << (char)R_ANGLE;
-	cout << "\n\n";
+	cout << '\n';
+}
+
+//------------------------------------------------------------------------------
+// check test cases from PA6 instructions
+//------------------------------------------------------------------------------
+void checkTestCases() {
+	cout << YELLOW << "\nTest cases from PA6 instructions:\n\n"
+		<< RESET_COLORS;
+
+	for (string s : testCases) {
+		checkBracketString(s);
+		cout << '\n';
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -90,10 +104,7 @@ void displayBanner() {
 void inputLoop() {
 	string input;
 	while (getInputString(input)) {
-		if (!balancedBrackets(input) || !g_stack.isEmpty())
-			cout << RED << input << RESET_COLORS << " is not balanced\n";
-		else
-			cout << YELLOW << input << RESET_COLORS << " is balanced\n";
+		checkBracketString(input);
 
 		g_stack.makeEmpty();
 	}
@@ -109,6 +120,16 @@ bool getInputString(string& s) {
 	cout << RESET_COLORS;
 
 	return !((bool)!s.compare("q") || (bool)!s.compare("Q"));
+}
+
+//------------------------------------------------------------------------------
+// checks one bracket string for balance
+//------------------------------------------------------------------------------
+void checkBracketString(string& s) {
+	if (!balancedBrackets(s) || !g_stack.isEmpty())
+		cout << RED << s << RESET_COLORS << " is not balanced\n";
+	else
+		cout << YELLOW << s << RESET_COLORS << " is balanced\n";
 }
 
 //------------------------------------------------------------------------------
