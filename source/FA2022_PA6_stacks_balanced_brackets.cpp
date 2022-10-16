@@ -24,7 +24,7 @@ using std::string;
 // constants
 //------------------------------------------------------------------------------
 static constexpr int MAX_LEN = 100;
-static const string PROMPT = "Enter bracket string: ";
+static const string PROMPT = "Enter bracket string to check: ";
 
 //------------------------------------------------------------------------------
 // globals
@@ -67,6 +67,7 @@ char cMatch(char c);
 int main() {
 	displayBanner();
 	checkTestCases();
+
 	inputLoop();
 
 	return 0;
@@ -105,8 +106,6 @@ void inputLoop() {
 	string input;
 	while (getInputString(input)) {
 		checkBracketString(input);
-
-		g_stack.makeEmpty();
 	}
 	cout << "\nGoodbye!\n";
 }
@@ -130,6 +129,10 @@ void checkBracketString(string& s) {
 		cout << RED << s << RESET_COLORS << " is not balanced\n";
 	else
 		cout << YELLOW << s << RESET_COLORS << " is balanced\n";
+
+	// reset stack when done with string
+	g_stack.makeEmpty();
+
 }
 
 //------------------------------------------------------------------------------
